@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <a href="https://api.whatsapp.com/send? 
+         phone=7310747066
+         &text=Hola, en que podemos ayudarte?." 
+   		 class="float" target="_blank" >
+<i class="fa fa-whatsapp my-float"></i>
+</a>
+  
+<%- include ('./partials/head') %>    
+  
+
+  <body >
+     
+<%- include ('./partials/header') %>
+
+    <main id="cuerpoJ">
+        <div id="descripcionJ">
+        <p id="randomJ"><b> 
+          D3 es una empresa que ofrece productos 3D y servicios de impresores 3D para que nuestros clientes puedan disponer de las mismas ante cualquier necesidad.
+          Con envíos a todo el país, en D3 te garantizamos las impresiones más finas y de mejor calidad del país.  Nos elijen no solo por la calidad y duración de 
+          nuestros productos, sino tambíen por la buena relación costo-precio que brindamos.
+        <br>
+        <br>
+          No te preocupes más si se te hace díficil conseguir o imprimir un producto. Mientras que tengas un archivo o modelo del producto a imprimir,
+          nosotros en tiempo y forma te lo llevaremos a la puerta de tu casa. Y si no te gusta, pedi un reemboloso sin cargo!
+        </b> 
+        </p> 
+        </div>
+        <br>
+        <div id="productosJH">
+          <% for (let i=5 ; i<11 ; i++) { %>
+            <div id="P1J" class="SPJ">
+              <section id="fotoPro">
+                  <a class="botonJ" href="/products/detail/<%=p[i].id%>" ><img src="../public/imagenes/<%=p[i].imagen%>" class="fotos"> </a>              
+              </section>
+              <section id="textoProducto">
+                      <p class="textosPS"><%=p[i].nombre %> </p>
+                      <p class="textosPSP"><%=p[i].precio - (p[i].descuento * p[i].precio)/100   %>$</p>
+                      <p class="textosPSd">Descuento </p>
+                      <p class="textosPSP"><%=p[i].descuento %>%</p>
+              </section>
+            </div>
+        
+      <% } %>
+      <br>
+      
+      <section id="APIs">
+        <button type="button" class="btn btn-dark" id="botonAPI"> <a href="/products/carritoApi"> API Carrito </a>  </button>
+        <button type="button" class="btn btn-dark" id="botonAPI"><a href="/products/categorias">  API categorias </a>  </button>
+        <button type="button" class="btn btn-dark" id="botonAPI"> <a href="/users/lastUser"> API Ult usuario </a>  </button>
+      </section>
+        <br>
+      <section id="APIs">
+        <button type="button" class="btn btn-dark" id="botonAPI"> <a href="/products/lastProd"> API Ult Prod </a>  </button>
+        <button type="button" class="btn btn-dark" id="botonAPI"> <a href="/users/api"> API usuarios </a>  </button>
+        <button type="button" class="btn btn-dark" id="botonAPI"> <a href="/products/api"> API productos </a>  </button>
+      </section>
+     <!----> 
+    </main>
+     
+<%- include ('./partials/footer') %>
+    
+  </body>
+</html>
+

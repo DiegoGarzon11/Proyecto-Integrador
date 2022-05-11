@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <a href="https://api.whatsapp.com/send?
+         phone=7310747066
+         &text=Hola, en que podemos ayudarte?."
+   		 class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>
+    
+<%- include ('../partials/head') %>  
+
+  <body >
+    
+<%- include ('../partials/header') %>
+
+    <main id="formCuerpo">
+        <form class="formulario" action="/users/register" method="POST" enctype="multipart/form-data">
+          <h2 id="tituloCreacion"> Registro de cuenta </h2>
+          <div class="erroresRG">
+            <ul>
+            </ul>
+          </div>
+          
+          <div>
+            <label for="nombre_completo"> Nombre completo: </label>
+            <input type="text" name="nombre_completo" class="nombrecompleto llenar form-control <%= locals.errors && errors.nombre_completo ? 'is-invalid' : null %>"           
+            value= "<%= locals.oldData ? oldData.nombre_completo : null%>">
+            <% if (locals.errors && errors.nombre_completo) { %>
+              <div class="text-error"> 
+                <%= errors.nombre_completo.msg %>
+              </div>
+            <% } %>
+            
+          </div>
+          <br> 
+          <div>
+            <label for="password"> Ingrese Contraseña: </label>
+            <input type="password" 
+            name="password" 
+            id="password" 
+            class="password llenar form-control <%= locals.errors && errors.password ? 'is-invalid' : null %>"
+            value= "<%= locals.oldData ? oldData.password : null%>">
+
+            <% if (locals.errors && errors.password) { %>
+              <div class="text-error"> 
+                <%= errors.password.msg %>
+              </div>
+            <% } %>
+          </div>
+          <br>
+          <div>
+            <label for="email"> Email: </label>
+            <input type="text" 
+            name="email" 
+            class="email llenar"          
+            class="form-control <%= locals.errors && errors.email ? 'is-invalid' : null %>"
+            value= "<%= locals.oldData ? oldData.email : null%>">
+            <% if (locals.errors && errors.email) { %>
+              <div class="text-error"> 
+                <%= errors.email.msg %>
+              </div>
+            <% } %>
+          </div>
+          <br>
+          <div>
+            <label for="date"> Fecha de Nacimiento:  </label>
+            <input type="date" 
+            min="1940-01-01" 
+            name="date" 
+            value="2000-01-01" 
+            class="llenar fechanacimiento" 
+            class="form-control <%= locals.errors && errors.date ? 'is-invalid' : null %>"
+            value= "<%= locals.oldData ? oldData.date : null%>">
+            <% if (locals.errors && errors.date) { %>
+              <div class="text-error"> 
+                <%= errors.date.msg %>
+              </div>
+            <% } %>
+          </div>
+          <br>
+          <div>
+            <label for="domicilio"> Domicilio: </label>
+            <input type="text" 
+            name="domicilio" 
+            id="domicilio" 
+            class="llenar"
+            class="form-control <%= locals.errors && errors.domicilio ? 'is-invalid' : null %>"
+            value= "<%= locals.oldData ? oldData.domicilio : null%>">
+            <% if (locals.errors && errors.domicilio) { %>
+              <div class="text-error"> 
+                <%= errors.domicilio.msg %>
+              </div>
+            <% } %>
+          </div>
+          <br>
+          <div>
+            <p>Preferencias: 
+            <select name="perfil"> 
+              <option value="Productos">Productos</option>
+              <option value="Servicios">Servicios</option>
+            </select></p>
+          </div>
+          <br>
+          <div>
+            <label for="interes" name="interes"> Categorías de Interes: 
+                <input type="checkbox" name="Accesorios"> Accesorios
+                <input type="checkbox" name="Respuestos"> Respuestos Medicos
+                <input type="checkbox" name="Soporte"> Soportes 
+                <input type="checkbox" name="Ortopedicos"> Productos Ortopedicos            
+            </label>
+          </div>
+          <br>
+         
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Ingrese su foto de perfil</label>
+            <input type="file" name="avatar" accept=".jpg" id="avatar">
+            <% if (locals.errors && errors.avatar) { %>
+              <div class="text-error"> 
+                <%= errors.avatar.msg %>
+              </div>
+            <% } %>
+          </div>           
+          <br>
+          <div id="limpieza">
+            <button type="reset" class="btn btn-danger"> Limpiar datos </button>
+            <button type="submit" class="btn btn-primary"> Registar </button>
+          </div>
+       <script src="/public/js/script.js"> </script>   
+        </form>     
+      </main>
+    
+  <%- include ('../partials/footer') %>
+     
+    </body>
+  </html>
